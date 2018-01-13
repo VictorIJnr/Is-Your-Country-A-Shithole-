@@ -7,11 +7,11 @@ $(document).ready(function(){
       $(this).addClass("active");
 
       if ($(this).attr('id') === 'map-tab') {
-        $('#search-block').fadeOut(500);
-        $('#map-block').fadeIn(500);
+        $('#search-block').hide();
+        $('#map-block').show();
       } else {
-        $('#map-block').fadeOut(500);
-        $('#search-block').fadeIn(500);
+        $('#map-block').hide();
+        $('#search-block').show();
       }
     }
 
