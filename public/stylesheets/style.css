@@ -1,8 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Kavivanar|Lato');
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
+  background-image: url('../assets/murica.png');
+  background-size: cover;
+}
+
+h4 {
+  font-family: 'Kavivanar', cursive;
+  font-size: 26px !important;
 }
 
 a {
   color: #00B7FF;
+}
+
+
+/*
+Bootstrap
+ */
+
+.jumbotron {
+  background-color: white;
+  margin-top: 30px;
+}
+
+.container {
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+
+
+/*
+Info
+ */
+
+
+.info {
+  width: 700px;
+  margin-left: 18%;
+  float: center;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+
+/*
+Main and Tabs
+ */
+
+ .all {
+   text-align: center;
+ }
+
+ .all img {
+   width: 1000px;
+ }
+
+ .sections {
+   width: 138px;
+   position: absolute;
+   left: 0;
+   right: 0;
+   margin: 0 auto;
+ }
+
+ .sections li:hover {
+   cursor: pointer;
+ }
+
+.blocks {
+  margin-top: 50px;
+}
+
+/*
+Search Bar
+ */
+
+
+#search-block {
+  padding: 10px;
+}
+
+.search {
+  width: 600px;
+  padding-top: 10px;
+}
+
+.search button {
+  display: inline-block;
+  background-color: transparent;
+}
+
+.search button i {
+  font-size: 30px;
+  line-height: 10px;
+}
+
+#searchbar-input {
+  display: inline-block;
+  width: 520px;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 2px grey;
+}
+
+#searchbar-input:focus, .search button:active, .search button:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+
+/*
+Map
+ */
+
+
+#map-block {
+  display: none;
+  padding-top: 20px;
+}
+
+
+/*
+Footer
+ */
+
+
+footer {
+  margin-top: 100px;
 }

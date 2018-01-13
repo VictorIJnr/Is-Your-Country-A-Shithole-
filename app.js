@@ -21,7 +21,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // home
 app.get('/', function(req, res) {
-  res.render('pages/index', {title: 'Is Your Country A Shithole?'});
+  res.render('pages/index', {
+    title: 'Is Your Country A Shithole?',
+    result: {
+      header: 'Yes',
+      body: 'Some facts about Haiti'
+    }
+  });
 });
 
 // catch 404 and forward to error handler
@@ -39,7 +45,10 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('pages/error', {
+    title: 'Is Your Country A Shithole?',
+    error: err.message
+  });
 });
 
 app.listen(3000);

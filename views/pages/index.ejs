@@ -6,14 +6,49 @@
 <body class="container">
 
 <header>
-    <% include ../partials/header %>
+    <!--<% include ../partials/header %>-->
 </header>
 
 <main>
-    <div class="jumbotron">
-        <h1><%= title %></h1>
-        <p>Welcome to templating using EJS</p>
+
+    <div class="all">
+      <img src="assets/donald-duck-title.png"/>
+      <div class="info">
+        <h4>The latest controversy surrounding Donald Trump is the alleged claim that Haiti, amongst others, are
+          "shithole countries". If you'd like to know if he thinks <i>your</i> country is a shithole, search
+          below or look at the heat map!
+        </h4>
+      </div>
+
+      <div class="sections">
+        <ul class="nav nav-tabs">
+          <li id="search-tab" class="active"><a>Search</a></li>
+          <li id="map-tab"><a>Map</a></li>
+        </ul>
+      </div>
+
+      <div class="blocks">
+        <div id="search-block">
+          <label class="search" for="searchbar-input">
+            <input id="searchbar-input" type="text" placeholder="e.g Haiti" alt="https://giphy.com/gifs/trump-donald-never-26ufj77mgPHLDHgWY"/>
+            <button type="button" class="searchbar-button btn">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </label>
+
+          <div class="jumbotron">
+              <h1><%= result.header %></h1>
+              <p><%= result.body %></p>
+          </div>
+        </div>
+
+        <div id="map-block">
+          <h1>Map</h1>
+        </div>
+      </div>
+
     </div>
+
 </main>
 
 <footer>
