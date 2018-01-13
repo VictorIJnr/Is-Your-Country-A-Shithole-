@@ -29,12 +29,14 @@
 
       <div class="blocks">
         <div id="search-block">
-          <label class="search" for="searchbar-input">
-            <input id="searchbar-input" type="text" placeholder="e.g Haiti" alt="https://giphy.com/gifs/trump-donald-never-26ufj77mgPHLDHgWY"/>
-            <button type="button" class="searchbar-button btn">
-              <i class="glyphicon glyphicon-search"></i>
-            </button>
-          </label>
+          <form method="GET">
+            <label class="search" for="searchbar-input">
+              <input id="searchbar-input" name="country" type="text" placeholder="e.g Haiti" alt="https://giphy.com/gifs/trump-donald-never-26ufj77mgPHLDHgWY"/>
+              <button type="button" class="searchbar-button btn">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </label>
+          </form>
 
           <div class="jumbotron">
               <h1><%= result.header %></h1>
