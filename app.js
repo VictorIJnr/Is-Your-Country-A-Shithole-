@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // home
 app.get('/', function(req, res) {
-  res.render('pages/index');
+  res.render('pages/index', {title: 'Is Your Country A Shithole?'});
 });
 
 // catch 404 and forward to error handler
