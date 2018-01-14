@@ -4,7 +4,12 @@ body {
   padding: 50px;
   font-family: 'Lato', sans-serif;
   background-image: url('../assets/murica.png');
-  background-size: cover;
+  background-size: contain;
+}
+
+h1 {
+  font-family: 'Kavivanar', cursive;
+  font-size: 56px !important;
 }
 
 h4 {
@@ -23,7 +28,8 @@ Bootstrap
 
 .jumbotron {
   background-color: white;
-  margin-top: 30px;
+  margin-top: 0;
+  border: solid 2px #222;
 }
 
 .container {
@@ -88,14 +94,20 @@ Search Bar
   padding-top: 10px;
 }
 
-.search button {
+.searchbar-button {
   display: inline-block;
   background-color: transparent;
+  pointer-events: none;
 }
 
-.search button i {
+.searchbar-button i {
   font-size: 30px;
   line-height: 10px;
+  color: #ADADAD;
+  transition: color 0.2s ease;
+  -webkit-transition: color 0.2s ease;
+  -moz-transition: color 0.2s ease;
+  -o-transition: color 0.2s ease;
 }
 
 #searchbar-input {
@@ -104,7 +116,13 @@ Search Bar
   font-size: 30px;
   background-color: transparent;
   border: none;
-  border-bottom: solid 2px grey;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #ADADAD;
+  transition: border-bottom-color 0.2s ease;
+  -webkit-transition: border-bottom-color 0.2s ease;
+  -moz-transition: border-bottom-color 0.2s ease;
+  -o-transition: border-bottom-color 0.2s ease;
 }
 
 #searchbar-input:focus, .search button:active, .search button:focus {
@@ -112,6 +130,9 @@ Search Bar
   box-shadow: none;
 }
 
+#searchbar-input::placeholder {
+  color: #ADADAD;
+}
 
 /*
 Map
@@ -119,9 +140,27 @@ Map
 
 
 #map-block {
-  display: none;
   padding-top: 20px;
+  height: 450px;
+  min-width: 310px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
+
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
+}
+
+.selector {
+  display: none;
+}
+
+#sideBox {
+  display: none;
+}
+
 
 
 /*
@@ -130,5 +169,5 @@ Footer
 
 
 footer {
-  margin-top: 100px;
+  margin-top: 20px;
 }

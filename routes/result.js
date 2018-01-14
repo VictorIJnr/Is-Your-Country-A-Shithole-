@@ -15,9 +15,9 @@ router.get('/', function(req, res, next) {
       shithole.isShithole(req.query.country, function(data) {
         result.decision = data ? "Yes" : "No";
         if (result.decision === "Yes") {
-          result.header = "Yes, Donald Trump thinks " + req.query.country + " is a Shithole!";
+          result.header = "Yes, Donald Trump thinks " + req.query.country + " is a shithole!";
         } else {
-          result.header = "No, Donald Trump doesn't think " + req.query.country + " is a Shithole.";
+          result.header = "No, Donald Trump doesn't think " + req.query.country + " is a shithole.";
         }
         result.body = "Some facts about " + req.query.country;
         res.render("pages/result", {
@@ -27,16 +27,14 @@ router.get('/', function(req, res, next) {
       });
     }
     else {
-      res.render('pages/index', {
-        title: 'Is Your Country A Shithole?'
+      res.render('pages/result', {
+        title: 'Is Your Country A Shithole?',
+        result: {
+          decision: 'Yes',
+          body: 'Some facts about Haiti'
+        }
       });
     }
-});
-
-router.get('/heatmap', function(req, res, next) {
-  res.render('pages/heatmap', {
-    title: 'Is Your Country A Shithole?'
-  });
 });
 
 module.exports = router;
