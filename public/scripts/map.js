@@ -206,7 +206,7 @@ $(document).ready(function(){
       ['nz', 202],
       ['cu', 203],
       ['ec', 204],
-      ['au', 205],
+      ['au', 10.12203339073299],
       ['ve', 206],
       ['sb', 207],
       ['mg', 208],
@@ -242,7 +242,7 @@ $(document).ready(function(){
 
       series: [{
           data: data,
-          name: 'Random data',
+          name: ' ',
           states: {
               hover: {
                   color: '#BADA55'

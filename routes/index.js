@@ -85,7 +85,7 @@ router.get('/', function(req, res, next) {
 
 router.use('/heatmap', function(req, res, next) {
 
-  var c = "Cuba";
+  var c = "Australia";
 
   res.render('pages/heatmap', {
     title: 'Is Your Country A Shithole?',
