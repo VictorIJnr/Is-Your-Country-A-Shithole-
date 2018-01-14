@@ -8,6 +8,9 @@ $(document).ready(function(){
 
   if ($('#gdp').text() === "High") {
     $('#gdp').css('color', 'green');
+  } else if ($('#undefinedgdp').text().includes("undefined") || $('#undefinedgdp').text().includes("NaN")) {
+    $('#undefinedgdp').css('display', 'none');
+    $('#undefinedgdpimg').css('display', 'none');
   } else {
     $('#gdp').css('color', 'red');
   }
@@ -16,6 +19,15 @@ $(document).ready(function(){
     $('#apprehended').css('color', 'red');
   } else {
     $('#apprehended').css('color', 'green');
+  }
+
+  if ($('#america').text().length > 0) {
+    $('#america').css('display', 'block');
+    $('.tag').css('display', 'none');
+    $('.jumbotron img').css('display', 'none');
+  } else {
+    $('#america').css('display', 'none');
+    $('.tag').css('display', 'block');
   }
 
 });

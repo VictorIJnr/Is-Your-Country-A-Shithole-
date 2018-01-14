@@ -54,26 +54,27 @@ shithole.eval = function(country, result) {
         gdp = average(gdp);
         exchange = average(exchange);
         life = average(life);
-        
+
         if (Object.keys(apprehended).includes(country)
         && Object.keys(total).includes(country)) {
             var gdpMod = gdpMax / Math.pow(gdp[country], 1);
 
             myCountry.apprehended = apprehended[country].reduce(sum, gdpMod);
             myCountry.total = total[country].reduce(sum);
+            myCountry.gdp = gdp[country];
 
             myCountry.preRatio = myCountry.apprehended / myCountry.total;
             myCountry.diff = myCountry.total - myCountry.apprehended;
             console.log("Ratio boi:\t" + myCountry.preRatio);
 
             myCountry.eval = (Math.pow(myCountry.apprehended, 2) / myCountry.total)
-                + (gdpMod / (myCountry.diff * life[country] * gdp[country])); 
+                + (gdpMod / (myCountry.diff * life[country] * gdp[country]));
                 /* * (myCountry.preRatio / gdpMod) * 100
                 + ((1 / (gdp[country] * Math.pow(life[country] - 18, 1)))))
                 * (gdpMod / exchange[country]); */
             console.log(country + " eval:\t" + myCountry.eval);
             console.log(country + " average GDP:\t" + gdp[country]);
-            
+
             result(myCountry);
         }
     });

@@ -45,6 +45,10 @@ Bootstrap & Result
   font-weight: bold;
 }
 
+#america {
+  display: none;
+}
+
 .container {
   padding-top: 0;
   padding-bottom: 20px;
