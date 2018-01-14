@@ -54,6 +54,7 @@ shithole.eval = function(country, result) {
         gdp = average(gdp);
         exchange = average(exchange);
         life = average(life);
+        population = average(population);
 
         if (Object.keys(apprehended).includes(country)
         && Object.keys(total).includes(country)) {
@@ -62,6 +63,7 @@ shithole.eval = function(country, result) {
             myCountry.apprehended = apprehended[country].reduce(sum, gdpMod);
             myCountry.total = total[country].reduce(sum);
             myCountry.gdp = gdp[country];
+            myCountry.population = population[country];
 
             myCountry.preRatio = myCountry.apprehended / myCountry.total;
             myCountry.diff = myCountry.total - myCountry.apprehended;
@@ -127,7 +129,8 @@ shithole.isShithole = function(country, result) {
               total : myCountry.total,
               totalTag : (myCountry.total >= haiti.total) ? "High" : "Low",
               gdp : myCountry.gdp,
-              gdpTag : (myCountry.gdp > haiti.gdp) ? "High" : "Low"
+              gdpTag : (myCountry.gdp > haiti.gdp) ? "High" : "Low",
+              population: myCountry.population
             }
             result(shitholeData);
         });
