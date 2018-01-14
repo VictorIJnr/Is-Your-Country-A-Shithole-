@@ -6,7 +6,7 @@ var shithole = {};
 shithole.parseCSV = function(inputFile, data) {
     var stream = fs.createReadStream(inputFile);
     var csvData = {};
- 
+
     var csvStream = csv()
     .on("data", function(data) {
         var i = 0;
@@ -18,7 +18,7 @@ shithole.parseCSV = function(inputFile, data) {
     .on("end", function() {
         data(csvData);
     });
-     
+
     stream.pipe(csvStream);
 }
 
@@ -35,14 +35,14 @@ shithole.eval = function(country, result) {
     shithole.parseCSV("data/table34.csv", function(data) {
         apprehended = data;
     });
-    
+
     shithole.parseCSV("data/table3.csv", function(data) {
         total = data;
         var gdpMax = scale(gdp);
         gdp = average(gdp);
         console.log(gdpMax);
-        
-        
+
+
         if (Object.keys(apprehended).includes(country)
         && Object.keys(total).includes(country)) {
                 var gdpMod = gdpMax / gdp[country];
@@ -54,7 +54,7 @@ shithole.eval = function(country, result) {
 
                 console.log(country + " eval:\t" + myCountry.eval);
                 console.log(country + " average GDP:\t" + gdp[country]);
-                
+
                 result(myCountry);
         }
     });
@@ -95,7 +95,7 @@ shithole.baseline = function(result) {
 
 shithole.isShithole = function(country, result) {
     shithole.eval(country, function(data) {
-        var myCountry = data; 
+        var myCountry = data;
         shithole.baseline(function(haiti) {
             var isShithole = myCountry.eval >= haiti.eval;
             result(isShithole);
