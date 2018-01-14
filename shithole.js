@@ -26,6 +26,11 @@ shithole.eval = function(country, result) {
     var myCountry = {};
     var apprehended;
     var total;
+    var gdp;
+
+    shithole.parseCSV("data/gdp.csv", function(data) {
+        gdp = data;
+    });
 
     shithole.parseCSV("data/table34.csv", function(data) {
         apprehended = data;
@@ -33,19 +38,52 @@ shithole.eval = function(country, result) {
     
     shithole.parseCSV("data/table3.csv", function(data) {
         total = data;
+        var gdpMax = scale(gdp);
+        gdp = average(gdp);
+        console.log(gdpMax);
+        
         
         if (Object.keys(apprehended).includes(country)
-            && Object.keys(total).includes(country)) {
+        && Object.keys(total).includes(country)) {
+                var gdpMod = gdpMax / gdp[country];
+
                 myCountry.apprehended = apprehended[country].reduce(sum, 0);
                 myCountry.total = total[country].reduce(sum);
-                myCountry.eval = myCountry.apprehended / myCountry.total;
-        
+
+                myCountry.eval = myCountry.apprehended / myCountry.total * (1 + gdpMod);
+
+                console.log(country + " eval:\t" + myCountry.eval);
+                console.log(country + " average GDP:\t" + gdp[country]);
+                
                 result(myCountry);
         }
     });
 
-    function sum(num1, num2) {
-        return parseInt(num1) + parseInt(num2);
+    function sum(num, current) {
+        if (isNaN(num)) return parseInt(current);
+        else return parseInt(num) + parseInt(current);
+    }
+
+    function average(csv) {
+        var leaky = scale(csv) * 0.25;
+        Object.keys(csv).forEach(key => {
+            var average = csv[key].reduce(sum, 0) / csv[key].length;
+            csv[key] = (average == 0) ? leaky : average;
+            // console.log(csv[key]);
+        });
+
+        return csv;
+    }
+
+    function scale(csv) {
+        var maximum = 0;
+        Object.keys(csv).forEach(key => {
+            csv[key].forEach(value => {
+                if (value > maximum) maximum = value;
+            });
+        });
+
+        return maximum;
     }
 }
 
