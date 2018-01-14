@@ -26,10 +26,15 @@ router.get('/', function(req, res, next) {
 
       shithole.isShithole(req.query.country, function(data) {
         result.decision = data.isShithole ? "Yes" : "No";
+
         if (result.decision === "Yes") {
           result.header = "Yes, Donald Trump thinks " + req.query.country + " is a \"shithole country\"!";
         } else {
           result.header = "No, Donald Trump doesn't think " + req.query.country + " is a \"shithole country\".";
+        }
+
+        if (req.query.country.toLowerCase() === "china") {
+          result.header = "No, Donald Trump loves " + req.query.country + "!";
         }
         result.bodyApprehended = "Number of people apprehended 2007-2016: " + data.apprehended;
         result.tagApprehended = data.apprehendedTag;
@@ -54,9 +59,16 @@ router.get('/', function(req, res, next) {
     }
 });
 
-router.get('/heatmap', function(req, res, next) {
+router.use('/heatmap', function(req, res, next) {
+
+  var c = "China";
+
   res.render('pages/heatmap', {
-    title: 'Is Your Country A Shithole?'
+    title: 'Is Your Country A Shithole?',
+    gb: shithole.isShithole(c, function(data) {
+      console.log(c + " " + data.eval);
+      return data.eval;
+    }),
   });
 });
 

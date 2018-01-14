@@ -1,18 +1,15 @@
 $(document).ready(function(){
 
-  // Prepare demo data
-  // Data is joined to map using value of 'hc-key' property by default.
-  // See API docs for 'joinBy' for more info on linking data and map.
-  var data = [
+    var data = [
       ['fo', 0],
-      ['um', 1],
-      ['us', 2],
-      ['jp', 3],
-      ['sc', 4],
-      ['in', 5],
-      ['fr', 6],
-      ['fm', 7],
-      ['cn', 8],
+      ['um', 0],
+      ['us', 0],
+      ['jp', 3.5431030299120483],
+      ['sc', 0],
+      ['in', 711.3155468642117],
+      ['fr', 26.18382062196343],
+      ['fm', 0],
+      ['cn', 754.2788179503456],
       ['pt', 9],
       ['sw', 10],
       ['sh', 11],
@@ -24,7 +21,7 @@ $(document).ready(function(){
       ['bu', 17],
       ['mv', 18],
       ['sp', 19],
-      ['gb', 20],
+      ['gb', 105.69371753629524],
       ['gr', 21],
       ['as', 22],
       ['dk', 23],
@@ -95,7 +92,7 @@ $(document).ready(function(){
       ['ke', 88],
       ['pe', 89],
       ['do', 90],
-      ['ht', 91],
+      ['ht', 1167.6074677234894],
       ['pg', 92],
       ['ao', 93],
       ['kh', 94],
@@ -219,7 +216,6 @@ $(document).ready(function(){
       ['np', 212]
   ];
 
-  // Create the chart
   Highcharts.mapChart('container', {
       chart: {
           map: 'custom/world'
@@ -258,6 +254,4 @@ $(document).ready(function(){
           }
       }]
   });
-
-
 });

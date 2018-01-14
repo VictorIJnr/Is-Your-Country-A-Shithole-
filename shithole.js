@@ -70,9 +70,10 @@ shithole.eval = function(country, result) {
                 * (gdpMod / exchange[country]); */
             console.log(country + " eval:\t" + myCountry.eval);
             console.log(country + " average GDP:\t" + gdp[country]);
+            console.log(country + ": " + myCountry.eval);
 
             result(myCountry);
-        }
+        } 
     });
 
     function sum(num, current) {
@@ -116,6 +117,7 @@ shithole.isShithole = function(country, result) {
             var isShithole = myCountry.eval >= haiti.eval;
             var shitholeData = {
               isShithole : isShithole,
+              eval: myCountry.eval,
               apprehended : myCountry.apprehended,
               apprehendedTag : (myCountry.apprehended >= haiti.apprehended) ? "High" : "Low",
               total : myCountry.total,
