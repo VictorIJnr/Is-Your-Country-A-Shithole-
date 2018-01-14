@@ -17,6 +17,9 @@ $(document).ready(function(){
 
   if ($('#apprehended').text() === "High") {
     $('#apprehended').css('color', 'red');
+  } else if ($('#undefinedapprehended').text().includes("undefined") || $('#undefinedapprehended').text().includes("NaN")) {
+    $('#undefinedapprehended').css('display', 'none');
+    $('#undefinedapprehendedimg').css('display', 'none');
   } else {
     $('#apprehended').css('color', 'green');
   }
