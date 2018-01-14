@@ -25,6 +25,29 @@ router.get('/', function(req, res, next) {
       // });
 
       shithole.isShithole(req.query.country, function(data) {
+
+        var result = {};
+
+        if (req.query.country.toLowerCase() === "russia") {
+
+          result.header = "да, I MEAN YES RUSSIA IS BEST COUNTRY";
+          result.bodyApprehended = "Number of people apprehended 2007-2016: " + 0;
+          result.tagApprehended = "Low";
+
+          result.bodyImmigration = "Percentage of people who love Putin: " + 100 + "%";
+          result.tagImmigration = "High";
+
+          result.bodyGdp = "Country's Average GDP per captia 2007-2016: " + 1000000000000 + " USD";
+          result.tagGdp = "High";
+
+          result.body = "";
+
+          res.render("pages/result", {
+            title: 'Is Your Country A Shithole?',
+            result: result
+          });
+        }
+
         result.decision = data.isShithole ? "Yes" : "No";
 
         if (result.decision === "Yes") {
@@ -36,6 +59,7 @@ router.get('/', function(req, res, next) {
         if (req.query.country.toLowerCase() === "china") {
           result.header = "No, Donald Trump loves " + req.query.country + "!";
         }
+
         result.bodyApprehended = "Number of people apprehended 2007-2016: " + data.apprehended;
         result.tagApprehended = data.apprehendedTag;
 
@@ -61,7 +85,7 @@ router.get('/', function(req, res, next) {
 
 router.use('/heatmap', function(req, res, next) {
 
-  var c = "China";
+  var c = "Cuba";
 
   res.render('pages/heatmap', {
     title: 'Is Your Country A Shithole?',

@@ -77,7 +77,7 @@ shithole.eval = function(country, result) {
             console.log(country + ": " + myCountry.eval);
 
             result(myCountry);
-        } 
+        }
     });
 
     function sum(num, current) {
