@@ -24,7 +24,7 @@ shithole.parseCSV = function(inputFile, data) {
 
 shithole.eval = function(country, result) {
     var myCountry = {};
-    var apprehended;
+    var apprehended, population;
     var total;
     var gdp, exchange, life;
 
@@ -42,6 +42,10 @@ shithole.eval = function(country, result) {
 
     shithole.parseCSV("data/table34.csv", function(data) {
         apprehended = data;
+    });
+
+    shithole.parseCSV("data/population.csv", function(data) {
+        population = data;
     });
 
     shithole.parseCSV("data/table3.csv", function(data) {
