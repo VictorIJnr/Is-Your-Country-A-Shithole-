@@ -26,10 +26,18 @@ shithole.eval = function(country, result) {
     var myCountry = {};
     var apprehended;
     var total;
-    var gdp;
+    var gdp, exchange, life;
+
+    shithole.parseCSV("data/life.csv", function(data) {
+        life = data;
+    });
 
     shithole.parseCSV("data/gdp.csv", function(data) {
         gdp = data;
+    });
+
+    shithole.parseCSV("data/exchange.csv", function(data) {
+        exchange = data;
     });
 
     shithole.parseCSV("data/table34.csv", function(data) {
@@ -40,21 +48,29 @@ shithole.eval = function(country, result) {
         total = data;
         var gdpMax = scale(gdp);
         gdp = average(gdp);
-
+        exchange = average(exchange);
+        life = average(life);
+        
         if (Object.keys(apprehended).includes(country)
         && Object.keys(total).includes(country)) {
-                var gdpMod = gdpMax / gdp[country];
+            var gdpMod = gdpMax / Math.pow(gdp[country], 1);
 
-                myCountry.apprehended = apprehended[country].reduce(sum, 0);
-                myCountry.total = total[country].reduce(sum);
-                myCountry.gdp = gdp[country];
+            myCountry.apprehended = apprehended[country].reduce(sum, gdpMod);
+            myCountry.total = total[country].reduce(sum);
 
-                myCountry.eval = myCountry.apprehended / myCountry.total * (1 + gdpMod);
+            myCountry.preRatio = myCountry.apprehended / myCountry.total;
+            myCountry.diff = myCountry.total - myCountry.apprehended;
+            console.log("Ratio boi:\t" + myCountry.preRatio);
 
-                console.log(country + " eval:\t" + myCountry.eval);
-                console.log(country + " average GDP:\t" + gdp[country] + "\n\n\n");
-
-                result(myCountry);
+            myCountry.eval = (Math.pow(myCountry.apprehended, 2) / myCountry.total)
+                + (gdpMod / (myCountry.diff * life[country] * gdp[country])); 
+                /* * (myCountry.preRatio / gdpMod) * 100
+                + ((1 / (gdp[country] * Math.pow(life[country] - 18, 1)))))
+                * (gdpMod / exchange[country]); */
+            console.log(country + " eval:\t" + myCountry.eval);
+            console.log(country + " average GDP:\t" + gdp[country]);
+            
+            result(myCountry);
         }
     });
 
