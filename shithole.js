@@ -6,7 +6,7 @@ var shithole = {};
 shithole.parseCSV = function(inputFile, data) {
     var stream = fs.createReadStream(inputFile);
     var csvData = {};
- 
+
     var csvStream = csv()
     .on("data", function(data) {
         var i = 0;
@@ -18,7 +18,7 @@ shithole.parseCSV = function(inputFile, data) {
     .on("end", function() {
         data(csvData);
     });
-     
+
     stream.pipe(csvStream);
 }
 
@@ -35,30 +35,31 @@ shithole.eval = function(country, result) {
     shithole.parseCSV("data/table34.csv", function(data) {
         apprehended = data;
     });
-    
+
     shithole.parseCSV("data/table3.csv", function(data) {
         total = data;
         var gdpMax = scale(gdp);
         gdp = average(gdp);
-        
+
         if (Object.keys(apprehended).includes(country)
         && Object.keys(total).includes(country)) {
                 var gdpMod = gdpMax / gdp[country];
 
                 myCountry.apprehended = apprehended[country].reduce(sum, 0);
                 myCountry.total = total[country].reduce(sum);
+                myCountry.gdp = gdp[country];
 
                 myCountry.eval = myCountry.apprehended / myCountry.total * (1 + gdpMod);
 
                 console.log(country + " eval:\t" + myCountry.eval);
                 console.log(country + " average GDP:\t" + gdp[country] + "\n\n\n");
-                
+
                 result(myCountry);
         }
     });
 
     function sum(num, current) {
-        if (isNaN(num)) return parseInt(current);
+        if (isNaN(num)) parseInt(current);
         else return parseInt(num) + parseInt(current);
     }
 
@@ -93,10 +94,19 @@ shithole.baseline = function(result) {
 
 shithole.isShithole = function(country, result) {
     shithole.eval(country, function(data) {
-        var myCountry = data; 
+        var myCountry = data;
         shithole.baseline(function(haiti) {
             var isShithole = myCountry.eval >= haiti.eval;
-            result(isShithole);
+            var shitholeData = {
+              isShithole : isShithole,
+              apprehended : myCountry.apprehended,
+              apprehendedTag : (myCountry.apprehended >= haiti.apprehended) ? "High" : "Low",
+              total : myCountry.total,
+              totalTag : (myCountry.total >= haiti.total) ? "High" : "Low",
+              gdp : myCountry.gdp,
+              gdpTag : (myCountry.gdp > haiti.gdp) ? "High" : "Low"
+            }
+            result(shitholeData);
         });
     });
 }

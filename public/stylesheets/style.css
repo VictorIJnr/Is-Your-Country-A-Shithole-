@@ -23,13 +23,26 @@ a {
 
 
 /*
-Bootstrap
+Bootstrap & Result
  */
 
 .jumbotron {
   background-color: white;
   margin-top: 0;
   border: solid 2px #222;
+}
+
+.jumbotron img {
+  max-width: 200px !important;
+  margin-bottom: 10px;
+}
+
+.jumbotron p {
+  margin-bottom: 40px !important;
+}
+
+.tag {
+  font-weight: bold;
 }
 
 .container {

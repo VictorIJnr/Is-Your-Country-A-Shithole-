@@ -25,13 +25,21 @@ router.get('/', function(req, res, next) {
       // });
 
       shithole.isShithole(req.query.country, function(data) {
-        result.decision = data ? "Yes" : "No";
+        result.decision = data.isShithole ? "Yes" : "No";
         if (result.decision === "Yes") {
           result.header = "Yes, Donald Trump thinks " + req.query.country + " is a shithole!";
         } else {
           result.header = "No, Donald Trump doesn't think " + req.query.country + " is a shithole.";
         }
-        result.body = "Some facts about " + req.query.country;
+        result.bodyApprehended = "Number of people apprehended 2007-2016: " + data.apprehended;
+        result.tagApprehended = data.apprehendedTag;
+
+        result.bodyImmigration = "Number of people who entered the country 2007-2016: " + data.total;
+        result.tagImmigration = data.totalTag;
+
+        result.bodyGdp = "Country's Average GDP per captia 2007-2016: " + data.gdp + " USD"
+        result.tagGdp = data.gdpTag;
+        
         res.render("pages/result", {
           title: 'Is Your Country A Shithole?',
           result: result
