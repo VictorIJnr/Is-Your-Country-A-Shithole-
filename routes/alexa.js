@@ -9,6 +9,19 @@ router.get("/", function(req, res, next) {
         console.log("Country:\t" + req.query.country);
         var result = {};
 
+        if (req.query.country.toLowerCase() === "united states of america" 
+            || req.query.country.toLowerCase() === "america"
+            || req.query.country.toLowerCase() === "usa") {
+            var result = {
+                header: "No, Donald Trump doesn't think " + req.query.country + " is a shithole. America is Great Again",
+                body: 'America is Great Again'
+            }
+            res.render('pages/result', {
+                title: 'Is Your Country A Shithole?',
+                result: result
+            });
+        }
+
         shithole.isShithole(req.query.country, function(data) {
         result.decision = data ? "Yes" : "No";
         if (result.decision === "Yes") {
