@@ -8,6 +8,9 @@ $(document).ready(function(){
 
   if ($('#gdp').text() === "High") {
     $('#gdp').css('color', 'green');
+  } else if ($('#undefinedgdp').text().includes("undefined") || $('#undefinedgdp').text().includes("NaN")) {
+    $('#undefinedgdp').css('display', 'none');
+    $('#undefinedgdpimg').css('display', 'none');
   } else {
     $('#gdp').css('color', 'red');
   }
