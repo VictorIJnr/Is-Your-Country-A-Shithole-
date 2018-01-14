@@ -48,7 +48,8 @@ shithole.eval = function(country, result) {
         population = data;
     });
 
-    shithole.parseCSV("data/table3.csv", function(data) {
+    setTimeout(function() {
+      shithole.parseCSV("data/table3.csv", function(data) {
         total = data;
         var gdpMax = scale(gdp);
         gdp = average(gdp);
@@ -80,7 +81,8 @@ shithole.eval = function(country, result) {
 
             result(myCountry);
         }
-    });
+    })
+  }, 400);
 
     function sum(num, current) {
         if (isNaN(num)) parseInt(current);
@@ -125,9 +127,9 @@ shithole.isShithole = function(country, result) {
               isShithole : isShithole,
               eval: myCountry.eval,
               apprehended : myCountry.apprehended,
-              apprehendedTag : (myCountry.apprehended >= haiti.apprehended) ? "High" : "Low",
+              apprehendedTag : ((myCountry.apprehended/myCountry.population) >= (haiti.apprehended/haiti.population)) ? "High" : "Low",
               total : myCountry.total,
-              totalTag : (myCountry.total >= haiti.total) ? "High" : "Low",
+              totalTag : ((myCountry.total/myCountry.population) >= (haiti.total/haiti.population)) ? "High" : "Low",
               gdp : myCountry.gdp,
               gdpTag : (myCountry.gdp > haiti.gdp) ? "High" : "Low",
               population: myCountry.population
