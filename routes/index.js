@@ -37,9 +37,11 @@ router.get('/', function(req, res, next) {
         result.bodyImmigration = "Number of people who entered the country 2007-2016: " + data.total;
         result.tagImmigration = data.totalTag;
 
-        result.bodyGdp = "Country's Average GDP per captia 2007-2016: " + data.gdp + " USD"
+        result.bodyGdp = "Country's Average GDP per captia 2007-2016: " + data.gdp + " USD";
         result.tagGdp = data.gdpTag;
-        
+
+        result.body = "";
+
         res.render("pages/result", {
           title: 'Is Your Country A Shithole?',
           result: result

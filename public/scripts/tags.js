@@ -18,4 +18,13 @@ $(document).ready(function(){
     $('#apprehended').css('color', 'green');
   }
 
+  if ($('#america').text().length > 0) {
+    $('#america').css('display', 'block');
+    $('.tag').css('display', 'none');
+    $('.jumbotron img').css('display', 'none');
+  } else {
+    $('#america').css('display', 'none');
+    $('.tag').css('display', 'block');
+  }
+
 });
