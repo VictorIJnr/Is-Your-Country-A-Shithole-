@@ -28,30 +28,30 @@ shithole.eval = function(country, result) {
     var total;
     var gdp, exchange, life;
 
-    shithole.parseCSV("data/life.csv", function(data) {
+    shithole.parseCSV("./data/life.csv", function(data) {
         life = data;
     });
 
-    shithole.parseCSV("data/gdp.csv", function(data) {
+    shithole.parseCSV("./data/gdp.csv", function(data) {
         gdp = data;
     });
 
-    shithole.parseCSV("data/exchange.csv", function(data) {
+    shithole.parseCSV("./data/exchange.csv", function(data) {
         exchange = data;
     });
 
-    shithole.parseCSV("data/table34.csv", function(data) {
+    shithole.parseCSV("./data/table34.csv", function(data) {
         apprehended = data;
     });
 
-    shithole.parseCSV("data/population.csv", function(data) {
+    shithole.parseCSV("./data/population.csv", function(data) {
         population = data;
     });
 
     setTimeout(function() {
-      shithole.parseCSV("data/table3.csv", function(data) {
+      shithole.parseCSV("./data/table3.csv", function(data) {
         total = data;
-        var gdpMax = scale(gdp);
+        var gdpMax = maxValOf(gdp);
         gdp = average(gdp);
         exchange = average(exchange);
         life = average(life);
@@ -90,7 +90,7 @@ shithole.eval = function(country, result) {
     }
 
     function average(csv) {
-        var leaky = scale(csv) * 0.25;
+        var leaky = maxValOf(csv) * 0.25;
         Object.keys(csv).forEach(key => {
             var average = csv[key].reduce(sum, 0) / csv[key].length;
             csv[key] = (average == 0) ? leaky : average;
@@ -100,7 +100,7 @@ shithole.eval = function(country, result) {
         return csv;
     }
 
-    function scale(csv) {
+    function maxValOf(csv) {
         var maximum = 0;
         Object.keys(csv).forEach(key => {
             csv[key].forEach(value => {
@@ -140,7 +140,7 @@ shithole.isShithole = function(country, result) {
 }
 
 shithole.allShitholes = function(result) {
-    shithole.parseCSV("data/table3.csv", async function(data) {
+    shithole.parseCSV("./data/table3.csv", async function(data) {
         var names = Object.keys(data).splice(1);
         var shitholes = [];
         names.forEach(name => {
