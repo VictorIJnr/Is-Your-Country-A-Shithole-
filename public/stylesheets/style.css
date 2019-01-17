@@ -1,26 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Kavivanar|Lato');
+@import url("https://fonts.googleapis.com/css?family=Kavivanar|Lato");
 
 body {
   padding: 50px;
-  font-family: 'Lato', sans-serif;
-  background-image: url('../assets/murica.png');
+  font-family: "Lato", sans-serif;
+  background-image: url("../assets/murica.png");
   background-size: contain;
 }
 
 h1 {
-  font-family: 'Kavivanar', cursive;
-  font-size: 56px !important;
+  font-family: "Kavivanar", cursive;
+  font-size: 56px;
 }
 
 h4 {
-  font-family: 'Kavivanar', cursive;
-  font-size: 22px !important;
+  font-family: "Kavivanar", cursive;
+  font-size: 22px;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
-
 
 /*
 Bootstrap & Result
@@ -54,44 +53,39 @@ Bootstrap & Result
   padding-bottom: 20px;
 }
 
-
 /*
 Info
  */
 
-
 .info {
-  width: 700px;
-  margin-left: 18%;
   float: center;
   padding-top: 40px;
   padding-bottom: 20px;
 }
 
-
 /*
 Main and Tabs
  */
 
- .all {
-   text-align: center;
- }
+.all {
+  text-align: center;
+}
 
- .all img {
-   width: 1000px;
- }
+.all img {
+  max-width: 80%;
+}
 
- .sections {
-   width: 138px;
-   position: absolute;
-   left: 0;
-   right: 0;
-   margin: 0 auto;
- }
+.sections {
+  width: 138px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
 
- .sections li:hover {
-   cursor: pointer;
- }
+.sections li:hover {
+  cursor: pointer;
+}
 
 .blocks {
   margin-top: 50px;
@@ -100,7 +94,6 @@ Main and Tabs
 /*
 Search Bar
  */
-
 
 #search-block {
   padding: 10px;
@@ -120,7 +113,7 @@ Search Bar
 .searchbar-button i {
   font-size: 30px;
   line-height: 10px;
-  color: #ADADAD;
+  color: #adadad;
   transition: color 0.2s ease;
   -webkit-transition: color 0.2s ease;
   -moz-transition: color 0.2s ease;
@@ -129,32 +122,33 @@ Search Bar
 
 #searchbar-input {
   display: inline-block;
-  width: 520px;
+  max-width: 520px;
   font-size: 30px;
   background-color: transparent;
   border: none;
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #ADADAD;
+  border-bottom-color: #adadad;
   transition: border-bottom-color 0.2s ease;
   -webkit-transition: border-bottom-color 0.2s ease;
   -moz-transition: border-bottom-color 0.2s ease;
   -o-transition: border-bottom-color 0.2s ease;
 }
 
-#searchbar-input:focus, .search button:active, .search button:focus {
+#searchbar-input:focus,
+.search button:active,
+.search button:focus {
   outline: none !important;
   box-shadow: none;
 }
 
 #searchbar-input::placeholder {
-  color: #ADADAD;
+  color: #adadad;
 }
 
 /*
 Map
  */
-
 
 #map-block {
   padding-top: 20px;
@@ -165,9 +159,9 @@ Map
 }
 
 .loading {
-    margin-top: 10em;
-    text-align: center;
-    color: gray;
+  margin-top: 10em;
+  text-align: center;
+  color: gray;
 }
 
 .selector {
@@ -176,4 +170,32 @@ Map
 
 #sideBox {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  #searchbar-input,
+  .searchbar-button i {
+    font-size: 22px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px !important;
+  }
+
+  .all img {
+    max-width: 100%;
+  }
+
+  .jumbotron img {
+    max-width: 100px !important;
+    margin-bottom: 10px;
+  }
 }
